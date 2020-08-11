@@ -8,6 +8,7 @@ Before running the DAML, a python environment with the required packages needs t
 
 There are multiple options that the program can take as parameters to change the run:
 
+
 | parameter | data type | default value | description  |
 | ------------- | ------------- | ------------- | 
 | --sample | int | 1000 | Number of samples in the simulated dataset  | 
