@@ -2,7 +2,7 @@
 
 ## Environment Set Up
 
-Before running the DAML, a python environment with the required packages needs to be set up.
+Before running the DAML workflow, a python environment with the required packages needs to be set up.
 
 ## Usage
 
