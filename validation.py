@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sklearn
-
+from sklearn.metrics import auc
+    
 def contingency_matrix_test(dataset, labels):
     tables = []
     for column in dataset.columns:
@@ -167,7 +168,9 @@ def plot_roc_curve(fpr_array, tpr_array, roc_score_array, label_array, title, fi
     if roc_subtract:
         for i in range(1, len(tpr_array)):
             # plots the corresponding FPR and TPR values found for the dataset scenario, substracting spiked 0 curve to the other ones
-            plt.plot(fpr_array[i] - fpr_array[0], tpr_array[i], color=colors[i], label=label_array[i] +', auc=' + str(round(roc_score_array[i] - roc_score_array[0], 3)))
+            corrected = correction(fpr_array[i] + (tpr_array[0] - fpr_array[0]))
+            area = auc(tpr_array[i], corrected)
+            plt.plot(corrected, tpr_array[i], color=colors[i], label=label_array[i] +', auc=' + str(round(1 - area, 3)))
     else:
         for i in range(0, len(tpr_array)):
             # plots the corresponding FPR and TPR values found for the dataset scenario
